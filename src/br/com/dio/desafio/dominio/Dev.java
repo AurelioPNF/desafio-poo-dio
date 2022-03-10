@@ -32,7 +32,27 @@ public class Dev {
                 .sum();
     }
 
-
+    public int calcularNivel() {
+    	int nivel = 0;
+    	int xpProximoNivel = 500;
+    	for(int i=0; i<calcularTotalXp();i+=100) {
+    		if(i>=xpProximoNivel) {
+    			nivel++;
+    			xpProximoNivel*=2;
+    		}
+    	}
+    	return nivel;
+    }
+    public void percentNextLevel(int nivel) {
+    	double xpNextLevel = 500;
+    	double xpAtual = calcularTotalXp();
+    	for(int i=0;i<nivel+1;i++) {
+    		xpNextLevel *=2;
+    	}
+    	System.out.println((xpAtual/xpNextLevel)*100+"% para o próximo nível!");
+    	System.out.println("---- "+xpAtual+"/"+xpNextLevel+" ----");
+    }
+    
     public String getNome() {
         return nome;
     }
